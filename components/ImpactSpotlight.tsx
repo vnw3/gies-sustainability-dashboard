@@ -17,7 +17,7 @@ const ImpactCard: React.FC<ImpactCardProps> = ({ category, outcome, context, ico
     <div className="relative z-10">
       <div className="flex justify-between items-start">
         <div className="p-3 bg-slate-50 rounded-xl text-slate-600 group-hover:bg-white group-hover:text-slate-900 group-hover:shadow-sm transition-all">
-          {React.cloneElement(icon as React.ReactElement, { size: 28 })}
+          {React.cloneElement(icon as React.ReactElement<any>, { size: 28 })}
         </div>
         <div className="px-3 py-1 rounded-full bg-slate-100 text-xs font-semibold text-slate-500 uppercase tracking-wider">
           {category}

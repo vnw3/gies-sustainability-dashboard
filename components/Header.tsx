@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Search, Moon, Sun, ChevronDown } from 'lucide-react';
+import { Menu, X, Search, Moon, Sun } from 'lucide-react';
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -15,7 +15,7 @@ const navStructure = [
     items: [
       { name: 'SDG Overview', href: '#goals-overview' },
       { name: 'Detailed Breakdown', href: '#goals-breakdown' },
-      { name: 'Metric Grid', href: '#goals-grid' },
+      { name: 'Data Cards', href: '#goals-grid' },
     ]
   },
   {
@@ -53,9 +53,8 @@ const navStructure = [
 const NavDropdown = ({ label, items }: { label: string, items: { name: string, href: string }[] }) => {
   return (
     <div className="relative group h-full flex items-center">
-      <button className="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200 py-2 focus:outline-none">
+      <button className="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200 py-2 focus:outline-none whitespace-nowrap">
         {label}
-        <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
       </button>
 
       {/* Dropdown Menu */}
@@ -96,30 +95,30 @@ export const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleTheme }) => {
                 className="h-10 w-auto object-contain"
               />
               <div className="flex flex-col">
-                <span className="text-xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight">
+                <span className="text-xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight whitespace-nowrap">
                   Gies Sustainability Dashboard
                 </span>
-                <span className="text-xs text-slate-500 dark:text-slate-400 font-medium tracking-wide uppercase">
+                <span className="text-xs text-slate-500 dark:text-slate-400 font-medium tracking-wide uppercase whitespace-nowrap">
                   College of Business
                 </span>
               </div>
             </div>
 
             {/* Desktop Navigation Row (Next to Logo) */}
-            <nav className="hidden lg:flex items-center space-x-6">
+            <nav className="hidden lg:flex items-center gap-8">
               {navStructure.map((navItem) => (
                 navItem.type === 'link' ? (
                   <a
                     key={navItem.name}
                     href={navItem.href}
-                    className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200 py-2"
+                    className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200 py-2 whitespace-nowrap"
                   >
                     {navItem.name}
                   </a>
                 ) : (
-                  <div key={navItem.name}>
+                  <React.Fragment key={navItem.name}>
                     <NavDropdown label={navItem.name} items={navItem.items || []} />
-                  </div>
+                  </React.Fragment>
                 )
               ))}
             </nav>
@@ -129,14 +128,14 @@ export const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleTheme }) => {
           <div className="flex items-center gap-4">
             
             {/* Search Bar (Desktop) */}
-            <div className="hidden lg:block relative group">
+            <div className="hidden xl:block relative group">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Search className="h-4 w-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors" />
               </div>
               <input
                 type="text"
-                className="block w-48 xl:w-64 pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border border-transparent rounded-full text-sm text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                placeholder="Search research, faculty..."
+                className="block w-48 pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border border-transparent rounded-full text-sm text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                placeholder="Search..."
               />
             </div>
 

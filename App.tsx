@@ -6,13 +6,10 @@ import { ImpactSpotlight } from './components/ImpactSpotlight';
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
-    // Check localStorage first
+    // Check localStorage
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme === 'dark';
-    }
-    // Fallback to system preference
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Default to false (Light Mode) if no preference is saved, or if it is 'light'
+    return savedTheme === 'dark';
   });
 
   useEffect(() => {

@@ -10,17 +10,17 @@ interface KPICardProps {
 }
 
 const KPICard: React.FC<KPICardProps> = ({ title, value, subtext, icon, accentColor }) => (
-  <div className="bg-white rounded-xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between h-full group">
+  <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full group">
     <div className="flex justify-between items-start mb-4">
       <div className={`p-2 rounded-lg ${accentColor} bg-opacity-10 text-opacity-100`}>
         {React.cloneElement(icon as React.ReactElement<any>, { className: `w-5 h-5 ${accentColor.replace('bg-', 'text-')}` })}
       </div>
-      <ArrowUpRight className="w-4 h-4 text-slate-300 group-hover:text-slate-500 transition-colors" />
+      <ArrowUpRight className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors" />
     </div>
     <div>
-      <h3 className="text-slate-500 text-sm font-medium uppercase tracking-wide mb-1">{title}</h3>
-      <p className="text-3xl font-bold text-slate-900 mb-1 tracking-tight">{value}</p>
-      <p className="text-xs text-slate-400 font-medium">{subtext}</p>
+      <h3 className="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wide mb-1">{title}</h3>
+      <p className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-1 tracking-tight">{value}</p>
+      <p className="text-xs text-slate-400 dark:text-slate-500 font-medium">{subtext}</p>
     </div>
   </div>
 );
@@ -30,7 +30,7 @@ export const MissionGrid: React.FC = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
       
       {/* Card A: The Mission (Spans full width on desktop) */}
-      <div className="col-span-1 md:col-span-2 lg:col-span-4 bg-slate-900 rounded-xl p-8 shadow-md text-white flex flex-col justify-center relative overflow-hidden group min-h-[300px]">
+      <div className="col-span-1 md:col-span-2 lg:col-span-4 bg-slate-900 dark:bg-slate-900 rounded-xl p-8 shadow-md text-white flex flex-col justify-center relative overflow-hidden group min-h-[250px] border border-transparent dark:border-slate-800">
         {/* Abstract Background Decoration */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500 rounded-full mix-blend-overlay filter blur-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
@@ -39,7 +39,7 @@ export const MissionGrid: React.FC = () => {
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-xs font-bold text-emerald-400 mb-4 shadow-sm">
             Mission Control
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold mb-3 leading-tight">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3 leading-tight text-white">
             Tracking the Real-World Impact of <span className="text-emerald-400">Gies Business Research</span>
           </h2>
           <p className="text-slate-300 text-base md:text-lg mb-6 max-w-2xl leading-relaxed">

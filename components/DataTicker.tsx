@@ -15,22 +15,22 @@ export const DataTicker: React.FC = () => {
 
   return (
     <div className="w-full relative">
-      {/* Gradient masks for smooth fade edges */}
-      <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
+      {/* Gradient masks for smooth fade edges - Adaptive to Dark Mode */}
+      <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-slate-50 to-transparent dark:from-slate-950 dark:to-transparent z-10 pointer-events-none transition-colors duration-300"></div>
+      <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-50 to-transparent dark:from-slate-950 dark:to-transparent z-10 pointer-events-none transition-colors duration-300"></div>
 
       <div className="overflow-hidden whitespace-nowrap py-2">
         <div className="inline-block animate-scroll">
           {displayData.map((item, index) => (
             <div key={index} className="inline-flex items-center mx-8">
-              <span className="text-sm font-semibold text-slate-400 uppercase tracking-wider mr-3">
+              <span className="text-sm font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mr-3">
                 {item.label}:
               </span>
-              <span className="text-lg font-bold text-slate-700 font-mono">
+              <span className="text-lg font-bold text-slate-700 dark:text-slate-300 font-mono">
                 {item.value}
               </span>
               {/* Separator Dot */}
-              <span className="ml-8 w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+              <span className="ml-8 w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700"></span>
             </div>
           ))}
         </div>

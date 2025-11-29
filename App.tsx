@@ -69,7 +69,7 @@ const App: React.FC = () => {
 
         {/* Section 4: Impact Spotlight */}
         <section id="impact">
-          <ImpactSpotlight />
+          <ImpactSpotlight isDarkMode={isDarkMode} />
         </section>
       </main>
 

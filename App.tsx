@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ArrowUp } from 'lucide-react';
 import { Header } from './components/Header';
 import { MissionGrid } from './components/MissionGrid';
 import { DataTicker } from './components/DataTicker';
@@ -12,6 +13,9 @@ const App: React.FC = () => {
     return savedTheme === 'dark';
   });
 
+  // Back to Top State
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
   useEffect(() => {
     const root = window.document.documentElement;
     if (isDarkMode) {
@@ -23,8 +27,29 @@ const App: React.FC = () => {
     }
   }, [isDarkMode]);
 
+  // Scroll Listener for Back to Top
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const toggleTheme = () => {
     setIsDarkMode((prev) => !prev);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (
@@ -51,6 +76,17 @@ const App: React.FC = () => {
       <footer className="max-w-7xl mx-auto px-4 py-8 text-center text-slate-400 dark:text-slate-500 text-sm">
         <p>&copy; {new Date().getFullYear()} Gies College of Business. All rights reserved.</p>
       </footer>
+
+      {/* Back to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 p-3 rounded-full bg-blue-600 text-white shadow-lg z-50 transition-all duration-300 transform hover:bg-blue-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-slate-900 ${
+          showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
+        aria-label="Back to Top"
+      >
+        <ArrowUp size={24} />
+      </button>
     </div>
   );
 };
